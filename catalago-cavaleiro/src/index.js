@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Home from "./Home";
-import './index.css'
+import './index.css';
+import "CavaleiroLista.css";
+
 
 ReactDOM.render(
   <React.StrictMode>

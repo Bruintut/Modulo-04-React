@@ -1,23 +1,23 @@
-export const paletas = [
+export const cavaleiros = [
   {
       
     "name": "Seiya",
     "skill":"Meteoro de Pegasos",
-    "picture": "assets/images/seiya.png"
+    "picture": require("assets/images/seiya.png").default
     
   },
   {
     
     "name": "Ikki",
     "skill":"Ave Fênix.",
-    "picture": "assets/images/ikki.png"
+    "picture": require("assets/images/ikki.png").default
     
   },
   {
     
     "name": "Hyoga",
     "skill":"Pó de Diamante.",
-    "picture": "assets/images/hyoga.png"
+    "picture": require("assets/images/hyoga.png").default
     
   }
 ]
