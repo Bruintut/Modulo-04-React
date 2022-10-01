@@ -15,6 +15,7 @@ function CavaleiroLista() {
 <div className="CavaleiroLista">
     {cavaleiros.map((cavaleiro, index) => (
     <div className="CavaleiroListaItem" key={`CavaleiroListaItem-${index}`}>
+        <span className="CavaleiroListaItem__badge"> {cavaleiroSelecionado[index] || 0} </span>
         <div>
         <div className="CavaleiroListaItem__name"> {cavaleiro.name} </div>
         
@@ -23,8 +24,8 @@ function CavaleiroLista() {
             {cavaleiro.skill}{" "}
         </div>
         <div className="CavaleiroListaItem__acoes Acoes">
-            <button className="Acoes__adicionar Acoes__adicionar--preencher">
-            adicionar
+            <button className="Acoes__adicionar Acoes__adicionar--preencher" 
+            onClick={() => adicionarItem(index)}>adicionar
             </button>
         </div>
         </div>
