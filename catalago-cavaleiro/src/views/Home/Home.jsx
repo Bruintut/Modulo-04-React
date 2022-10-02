@@ -1,5 +1,5 @@
 import "./Home.css";
-import CavaleiroLista from "CavaleiroLista";
+import CavaleiroLista from "components/CavaleiroLista/CavaleiroLista";
 import album from "assets/icons/album.svg";
 import logo from "assets/logo.svg";
 
