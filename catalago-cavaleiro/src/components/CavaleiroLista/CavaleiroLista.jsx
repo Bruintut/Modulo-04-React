@@ -22,7 +22,7 @@ function CavaleiroLista() {
         const response = await CavaleiroService.getLista();
         setCavaleiros(response);
       };
-    
+      console.log(getLista)
       useEffect(() => {
         getLista();
       }, []);
