@@ -1,9 +1,11 @@
-import { cavaleiros } from "mocks/cavaleiros.js";
 import "./CavaleiroLista.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import CavaleiroListaItem from "components/CavaleiroListaItem/CavaleiroListaItem";
+import { CavaleiroService } from "services/CavaleiroService";
 
 function CavaleiroLista() {
+    const [cavaleiros, setCavaleiros] = useState([]);
+
     const [cavaleiroSelecionado, setCavaleiroSelecionado] = useState({});
 
     const adicionarItem = (cavaleiroIndex) => {
@@ -15,6 +17,15 @@ function CavaleiroLista() {
         const cavaleiro = { [cavaleiroIndex]: Number(cavaleiroSelecionado[cavaleiroIndex] || 0) -1 }
         setCavaleiroSelecionado({...cavaleiroSelecionado, ...cavaleiro});
     }
+
+    const getLista = async () => {
+        const response = await CavaleiroService.getLista();
+        setCavaleiros(response);
+      };
+    
+      useEffect(() => {
+        getLista();
+      }, []);
 
     return (
         <div className="CavaleiroLista">

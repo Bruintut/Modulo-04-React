@@ -8,6 +8,6 @@ const CavaleiroContext = {
   };
   
   export const Api = {
-    baseUrl: "http://localhost:3000",
+    baseUrl: "./db.json",
     ...CavaleiroContext,
   };
