@@ -1,0 +1,10 @@
+{
+  "cavaleiros": [
+    {
+      "id": 1,
+      "name": "Seiya",
+      "skill": "Meteoro de Pegasos",
+      "picture": "assets/images/seiya.png"
+    }
+  ]
+}
