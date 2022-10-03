@@ -1,27 +1,16 @@
 import "./CavaleiroListaItem.css"
 
-function CavaleiroListaItem(){
-
-    const removerItem = (i) => console.log('remover' + i);
-	const adicionarItem = (i) => console.log('adicionar' + i);
-	const cavaleiroSelecionado = [0];
-	const index = 0;
-	const cavaleiro = {		      
-            "name": "Seiya",
-            "skill":"Meteoro de Pegasos",
-            "picture": require("assets/images/seiya.png").default
-                      
-	};
+function CavaleiroListaItem({ cavaleiro, quantidadeSelecionada, index, onRemove, onAdd }){ 
 
     const removeButton = (canRender, index) =>
-	Boolean(canRender) && (<button className="Acoes__remover" onClick={() => removerItem(index)}>remover</button>);
+	Boolean(canRender) && (<button className="Acoes__remover" onClick={() => onRemove(index)}>remover</button>);
 
     const badgeCounter = (canRender, index) =>
-	Boolean(canRender) && (<span className="CavaleiroListaItem__badge"> {cavaleiroSelecionado[index]} </span>);
+	Boolean(canRender) && (<span className="CavaleiroListaItem__badge"> {quantidadeSelecionada} </span>);
 
     return(
         <div className="CavaleiroListaItem" key={`CavaleiroListaItem-${index}`}>
-            {badgeCounter(cavaleiroSelecionado[index], index)}
+            {badgeCounter(quantidadeSelecionada, index)}
             <div>
                 <div className="CavaleiroListaItem__name"> {cavaleiro.name} </div>
             
@@ -30,10 +19,10 @@ function CavaleiroListaItem(){
                     {cavaleiro.skill}{" "}
                 </div>
                 <div className="CavaleiroListaItem__acoes Acoes">
-                <button className={`Acoes__adicionar ${!cavaleiroSelecionado[index] && "Acoes__adicionar--preencher"}`} 
-                onClick={() => adicionarItem(index)}>adicionar
+                <button className={`Acoes__adicionar ${!quantidadeSelecionada && "Acoes__adicionar--preencher"}`} 
+                onClick={() => onAdd(index)}>adicionar
                 </button>
-                {removeButton(cavaleiroSelecionado[index], index)}
+                {removeButton(quantidadeSelecionada, index)}
 
                 </div>
             </div>

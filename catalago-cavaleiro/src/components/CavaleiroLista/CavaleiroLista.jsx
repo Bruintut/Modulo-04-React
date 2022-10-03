@@ -19,7 +19,12 @@ function CavaleiroLista() {
     return (
         <div className="CavaleiroLista">
             {cavaleiros.map((cavaleiro, index) => (
-                <CavaleiroListaItem key={`CavaleiroListaItem-${index}`}/>
+                <CavaleiroListaItem key={`CavaleiroListaItem-${index}`}
+                cavaleiro={cavaleiro}
+                quantidadeSelecionada={cavaleiroSelecionado[index]}
+                index={index}
+                onAdd={index => adicionarItem(index)}
+			    onRemove={index => removerItem(index)}/>
             
             ))}
         </div>
