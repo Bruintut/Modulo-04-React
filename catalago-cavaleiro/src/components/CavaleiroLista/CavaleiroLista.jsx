@@ -55,8 +55,10 @@ function CavaleiroLista({ cavaleiroCriada }) {
             
             ))}
 
-            {cavaleiroModal && <CavaleiroDetalhesModal cavaleiro={cavaleiroModal} closeModal={() => 
-                setCavaleiroModal(false)} />}
+            {cavaleiroModal && (
+            <CavaleiroDetalhesModal 
+            cavaleiro={cavaleiroModal} closeModal={() => 
+                setCavaleiroModal(false)} />)}
 
         </div>
     );
