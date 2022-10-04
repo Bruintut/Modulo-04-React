@@ -36,7 +36,6 @@ function CavaleiroLista({ cavaleiroCriada }) {
         const response = await CavaleiroService.getLista();
         setCavaleiros(response);
       };
-      console.log(getLista)
       useEffect(() => {
         getLista();
       }, []);
@@ -56,10 +55,11 @@ function CavaleiroLista({ cavaleiroCriada }) {
             ))}
 
             {cavaleiroModal && (
-            <CavaleiroDetalhesModal 
-            cavaleiro={cavaleiroModal} closeModal={() => 
-                setCavaleiroModal(false)} />)}
-
+                <CavaleiroDetalhesModal 
+                cavaleiro={cavaleiroModal}
+                closeModal={() => setCavaleiroModal(false)} 
+                />
+            )}
         </div>
     );
 }

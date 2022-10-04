@@ -53,7 +53,7 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
     return (
         <Modal closeModal={closeModal}>
             <div className="AdicionaCavaleiroModal">
-                <form autocomplete="off">
+                <form autoComplete="off">
                     <h2> Adicionar ao Catálago </h2>
                     <div>
                         <label className="AdicionaCavaleiroModal__text" htmlFor="name"> Name: </label>
