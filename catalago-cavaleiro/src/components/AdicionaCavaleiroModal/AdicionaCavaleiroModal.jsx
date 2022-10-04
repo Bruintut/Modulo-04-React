@@ -1,8 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
-import "./AdicionaCavaleiroModal.css"
+import "./AdicionaCavaleiroModal.css";
+import { CavaleiroService } from "services/CavaleiroService"
 
 function AdicionaCavaleiroModal({ closeModal }) {
+    const createCavaleiro = async () => {
+        const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split('\\').pop();
+    
+        const { name, skill, picture } = state;
+        
+        const cavaleiro = {
+            name,
+            skill,
+            picture: `assets/images/${renomeiaCaminhoFoto(picture)}`
+        }
+    
+        const response = await CavaleiroService.create(cavaleiro);
+        closeModal();
+    }
+    const [canDisable, setCanDisable] = useState(true);
+
+    const canDisableSendButton = () => {
+    const response = !Boolean(
+        state.name.length
+        && state.picture.length
+        && state.skill.length
+
+    );
+
+    setCanDisable(response);
+    };
+
+    useEffect(() => {
+        canDisableSendButton();
+    })
     const form = {
         name: "",
         skill: "",
@@ -53,10 +84,13 @@ function AdicionaCavaleiroModal({ closeModal }) {
                             onChange={(e) => handleChange(e, "picture")} />
                     </div>
 
-                    <input
+                    <button
                         className="AdicionaCavaleiroModal__enviar"
-                        type="submit"
-                        value="Enviar" />
+                        type="button"
+                        disabled="{canDisable}"
+                        onClick={createCavaleiro} >
+                        Enviar
+                    </button>
                 </form>
             </div>
         </Modal>

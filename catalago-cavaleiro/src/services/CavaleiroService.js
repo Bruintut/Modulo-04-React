@@ -24,8 +24,10 @@ const transformCavaleiro = (cavaleiro) => {
             fetch(Api.cavaleiroLista(), { method: "GET" }).then(parseTransformLista),
         getById: (id) =>
             fetch(Api.cavaleiroById(id), { method: "GET" }).then(parseTransformItem),
-        create: () =>
-        fetch(Api.createCavaleiro(), { method: "POST" }).then(parseResponse),
+        create: (cavaleiro) =>
+            fetch(Api.createCavaleiro(), { method: "POST", body: JSON.stringify(cavaleiro), mode: "cors", headers: {
+                "Content-Type": "application/json",
+             } }).then(parseTransformItem),
         updateById: (id) =>
             fetch(Api.updateCavaleiroById(id), { method: "PUT" }).then(parseResponse),
         deleteById: (id) =>
