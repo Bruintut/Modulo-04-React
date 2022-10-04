@@ -2,7 +2,6 @@ import "./CavaleiroLista.css"
 import { useState, useEffect } from "react"
 import CavaleiroListaItem from "components/CavaleiroListaItem/CavaleiroListaItem";
 import { CavaleiroService } from "services/CavaleiroService";
-
 import CavaleiroDetalhesModal from "components/CavaleiroDetalhesModal/CavaleiroDetalhesModal";
 
 function CavaleiroLista({ cavaleiroCriada }) {

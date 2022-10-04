@@ -5,7 +5,7 @@ function CavaleiroListaItem({ cavaleiro, quantidadeSelecionada, index, onRemove,
     const removeButton = (canRender, index) =>
 	Boolean(canRender) && (<button className="Acoes__remover" onClick={(e) => {
         e.stopPropagation();
-        onRemove(index)}}>remover</button>);
+        onRemove(index);}}>remover</button>);
 
     const badgeCounter = (canRender, index) =>
 	Boolean(canRender) && (<span className="CavaleiroListaItem__badge"> {quantidadeSelecionada} </span>);
@@ -22,7 +22,7 @@ function CavaleiroListaItem({ cavaleiro, quantidadeSelecionada, index, onRemove,
                 </div>
                 <div className="CavaleiroListaItem__acoes Acoes">
                 <button className={`Acoes__adicionar ${!quantidadeSelecionada && "Acoes__adicionar--preencher"}`} 
-                onClick={(e) => { e.stopPropagation(); onAdd(index)}}>adicionar
+                onClick={(e) => { e.stopPropagation(); onAdd(index);}}>adicionar
                 </button>
                 {removeButton(quantidadeSelecionada, index)}
 
