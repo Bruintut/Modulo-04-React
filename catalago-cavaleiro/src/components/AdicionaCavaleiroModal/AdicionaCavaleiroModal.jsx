@@ -11,13 +11,13 @@ function AdicionaCavaleiroModal({ closeModal }) {
 
     const [state, setState] = useState(form);
 
-    const handleChange = (e, name) => {
-        setState({ ...state, [name]: e.target.value, });
+    const handleChange = (e, nome) => {
+        setState({ ...state, [nome]: e.target.value, });
     };
 
     return (
         <Modal closeModal={closeModal}>
-            <div className="AdicionaPaletaModal">
+            <div className="AdicionaCavaleiroModal">
                 <form autocomplete="off">
                     <h2> Adicionar ao Catálago </h2>
                     <div>

@@ -5,6 +5,7 @@ import AdicionaCavaleiroModal from "components/AdicionaCavaleiroModal/AdicionaCa
 import { useState } from "react";
 
 function Home() {
+
   const [canShowAdicionaCavaleiroModal, setCanShowAdicionaCavaleiroModal] = useState(false);
 
   return (
@@ -14,7 +15,7 @@ function Home() {
         <CavaleiroLista />
         {
           canShowAdicionaCavaleiroModal && 
-          (<AdicionaCavaleiroModal closeModal={() => setCanShowAdicionaCavaleiroModal(false)}/>)
+          (<AdicionaCavaleiroModal closeModal={() => setCanShowAdicionaCavaleiroModal(false)} />)
         }
         <AdicionaCavaleiroModal/>
       </div>
