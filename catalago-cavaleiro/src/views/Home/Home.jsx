@@ -14,7 +14,7 @@ function Home() {
     <div className="Home">
       <Navbar createCavaleiro={() => setCanShowAdicionaCavaleiroModal(true)}/>  
       <div className="Home__container">
-        <CavaleiroLista cavaleiroCriada={cavaleiroParaAdicionar} />
+        <CavaleiroLista cavaleiroCriado={cavaleiroParaAdicionar} />
                 {
                     canShowAdicionaCavaleiroModal && (
                     <AdicionaCavaleiroModal
@@ -30,7 +30,6 @@ function Home() {
             closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
             onCreateCavaleiro={(cavaleiro) => setCavaleiroParaAdicionar(cavaleiro)} />
         }
-        
       </div>
     </div>
   );

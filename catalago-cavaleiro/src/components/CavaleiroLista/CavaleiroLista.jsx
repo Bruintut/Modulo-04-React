@@ -4,7 +4,7 @@ import CavaleiroListaItem from "components/CavaleiroListaItem/CavaleiroListaItem
 import { CavaleiroService } from "services/CavaleiroService";
 import CavaleiroDetalhesModal from "components/CavaleiroDetalhesModal/CavaleiroDetalhesModal";
 
-function CavaleiroLista({ cavaleiroCriada }) {
+function CavaleiroLista({ cavaleiroCriado }) {
     const [cavaleiros, setCavaleiros] = useState([]);
 
     const [cavaleiroSelecionado, setCavaleiroSelecionado] = useState({});
@@ -30,6 +30,10 @@ function CavaleiroLista({ cavaleiroCriada }) {
         const lista = [...cavaleiros, cavaleiro];
         setCavaleiros(lista);
     };
+    useEffect(() => {
+        if (cavaleiroCriado) adicionaCavaleiroNaLista(cavaleiroCriado);
+    }, [cavaleiroCriado]);
+
 
     const getLista = async () => {
         const response = await CavaleiroService.getLista();
