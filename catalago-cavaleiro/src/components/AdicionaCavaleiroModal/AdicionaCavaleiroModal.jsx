@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import "./AdicionaCavaleiroModal.css";
-import { CavaleiroService } from "services/CavaleiroService"
+import { CavaleiroService } from "services/CavaleiroService";
 
 function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
     const form = {
@@ -91,7 +91,7 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
 
                     <button
                         className="AdicionaCavaleiroModal__enviar"
-                        type="submit"
+                        type="button"
                         disabled="{canDisable}"
                         onClick={createCavaleiro} >
                         Enviar
