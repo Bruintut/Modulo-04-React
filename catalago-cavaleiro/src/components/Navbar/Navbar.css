@@ -69,6 +69,12 @@
     .Header {
       max-width: 320px;
     }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
   }
   
   @media (max-width: 400px) {
@@ -83,4 +89,17 @@
     .Logo__titulo {
       font-size: 1.5em;
     }
+  }
+
+  .Opcoes {
+    display: flex;
+  }
+  
+  .Cavaleiro {
+    background: none;
+    border: none;
+  }
+  
+  .Cavaleiro__icone {
+    cursor: pointer;
   }
