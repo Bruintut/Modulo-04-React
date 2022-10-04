@@ -4,32 +4,34 @@ import CavaleiroLista from "components/CavaleiroLista/CavaleiroLista";
 import Navbar from "components/Navbar/Navbar";
 import AdicionaCavaleiroModal from "components/AdicionaCavaleiroModal/AdicionaCavaleiroModal";
 
-
 function Home() {
-
-  const [canShowAdicionaCavaleiroModal, setCanShowAdicionaCavaleiroModal] = useState(false);
-  const [cavaleiroParaAdicionar, setCavaleiroParaAdicionar] = useState()
+  const [canShowAdicionaCavaleiroModal, setCanShowAdicionaCavaleiroModal] =
+    useState(false);
+  const [cavaleiroParaAdicionar, setCavaleiroParaAdicionar] = useState();
 
   return (
     <div className="Home">
-      <Navbar createCavaleiro={() => setCanShowAdicionaCavaleiroModal(true)}/>  
+      <Navbar createCavaleiro={() => setCanShowAdicionaCavaleiroModal(true)} />
       <div className="Home__container">
         <CavaleiroLista cavaleiroCriado={cavaleiroParaAdicionar} />
-                {
-                    canShowAdicionaCavaleiroModal && (
-                    <AdicionaCavaleiroModal
-                        closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
-                        onCreateCavaleiro={(cavaleiro) => setCavaleiroParaAdicionar(cavaleiro)} />
-                    )
-                }
+        {canShowAdicionaCavaleiroModal && (
+          <AdicionaCavaleiroModal
+            closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
+            onCreateCavaleiro={(cavaleiro) =>
+              setCavaleiroParaAdicionar(cavaleiro)
+            }
+          />
+        )}
 
         <CavaleiroLista />
-        {
-          canShowAdicionaCavaleiroModal && 
-          <AdicionaCavaleiroModal 
+        {canShowAdicionaCavaleiroModal && (
+          <AdicionaCavaleiroModal
             closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
-            onCreateCavaleiro={(cavaleiro) => setCavaleiroParaAdicionar(cavaleiro)} />
-        }
+            onCreateCavaleiro={(cavaleiro) =>
+              setCavaleiroParaAdicionar(cavaleiro)
+            }
+          />
+        )}
       </div>
     </div>
   );

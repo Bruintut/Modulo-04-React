@@ -11,7 +11,7 @@ function CavaleiroDetalhesModal({ cavaleiro, closeModal }) {
             {" "}
             <b>Skill:</b> {cavaleiro.skill}{" "}
           </div>
-          
+
           <div className="CavaleiroDetalhesModal__skill">
             {" "}
             <b>Descrição:</b> {cavaleiro.skill}{" "}
