@@ -3,7 +3,35 @@ import Modal from "components/Modal/Modal";
 import "./AdicionaCavaleiroModal.css";
 import { CavaleiroService } from "services/CavaleiroService"
 
-function AdicionaCavaleiroModal({ closeModal }) {
+function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
+    const form = {
+        name: "",
+        skill: "",
+        picture: "",
+    };
+
+    const [state, setState] = useState(form);
+    const [canDisable, setCanDisable] = useState(true);
+
+    const canDisableSendButton = () => {
+        const response = !Boolean(
+            state.name.length
+            && state.picture.length
+            && state.skill.length
+    
+        );
+    
+        setCanDisable(response);
+    };
+
+    const handleChange = (e, nome) => {
+        setState({ ...state, [nome]: e.target.value, });
+    };
+    
+    useEffect(() => {
+        canDisableSendButton();
+    })
+
     const createCavaleiro = async () => {
         const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split('\\').pop();
     
@@ -16,35 +44,11 @@ function AdicionaCavaleiroModal({ closeModal }) {
         }
     
         const response = await CavaleiroService.create(cavaleiro);
+        onCreateCavaleiro(response);
         closeModal();
     }
-    const [canDisable, setCanDisable] = useState(true);
-
-    const canDisableSendButton = () => {
-    const response = !Boolean(
-        state.name.length
-        && state.picture.length
-        && state.skill.length
-
-    );
-
-    setCanDisable(response);
-    };
-
-    useEffect(() => {
-        canDisableSendButton();
-    })
-    const form = {
-        name: "",
-        skill: "",
-        picture: "",
-    };
-
-    const [state, setState] = useState(form);
-
-    const handleChange = (e, nome) => {
-        setState({ ...state, [nome]: e.target.value, });
-    };
+    
+   
 
     return (
         <Modal closeModal={closeModal}>

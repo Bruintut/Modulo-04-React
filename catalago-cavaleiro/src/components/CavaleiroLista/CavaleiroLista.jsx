@@ -5,7 +5,7 @@ import { CavaleiroService } from "services/CavaleiroService";
 
 import CavaleiroDetalhesModal from "components/CavaleiroDetalhesModal/CavaleiroDetalhesModal";
 
-function CavaleiroLista() {
+function CavaleiroLista({ cavaleiroCriada }) {
     const [cavaleiros, setCavaleiros] = useState([]);
 
     const [cavaleiroSelecionado, setCavaleiroSelecionado] = useState({});
@@ -25,6 +25,11 @@ function CavaleiroLista() {
     const getCavaleiroById = async (cavaleiroId) => {
         const response = await CavaleiroService.getById(cavaleiroId);
         setCavaleiroModal(response);
+    };
+
+    const adicionaCavaleiroNaLista = (cavaleiro) => {
+        const lista = [...cavaleiros, cavaleiro];
+        setCavaleiros(lista);
     };
 
     const getLista = async () => {
