@@ -1,5 +1,4 @@
 import "./Navbar.css";
-
 import album from "assets/icons/album.svg";
 import logo from "assets/logo.svg";
 import cavaleiro from "assets/icons/plus.svg"
@@ -21,10 +20,6 @@ function Navbar({ createCavaleiro}) {
                 <button type="button" className="Opcoes__cavaleiro Cavaleiro" onClick={() => createCavaleiro() }>
                         <img src={cavaleiro} width="40px" className="Cavaleiro__icone" alt="Adiconar cavaleiro" />
                 </button>
-
-
-
-
                     <div className="Opcoes__album Album">
                         <img
                         src={album}

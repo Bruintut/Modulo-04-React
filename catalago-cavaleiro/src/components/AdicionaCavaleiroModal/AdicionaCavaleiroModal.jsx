@@ -48,8 +48,6 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
         closeModal();
     }
     
-   
-
     return (
         <Modal closeModal={closeModal}>
             <div className="AdicionaCavaleiroModal">
@@ -62,7 +60,8 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
                             placeholder="name"
                             type="text"
                             value={state.name}
-                            onChange={(e) => handleChange(e, "name")} />
+                            onChange={(e) => handleChange(e, "name")} 
+                            required/>
                     </div>
                     
                     
@@ -73,7 +72,8 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
                             placeholder="Habilidade do Cavaleiro"
                             type="text"
                             value={state.skill}
-                            onChange={(e) => handleChange(e, "skill")} />
+                            onChange={(e) => handleChange(e, "skill")} 
+                            required/>
                     </div>
                     <div>
                         <label className="AdicionaCavaleiroModal__text  AdicionaCavaleiroModal__picture-label" htmlFor="picture" >
@@ -85,12 +85,13 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
                             type="file"
                             accept="image/png, image/gif, image/jpeg"
                             value={state.picture}
-                            onChange={(e) => handleChange(e, "picture")} />
+                            onChange={(e) => handleChange(e, "picture")} 
+                            required/>
                     </div>
 
                     <button
                         className="AdicionaCavaleiroModal__enviar"
-                        type="button"
+                        type="submit"
                         disabled="{canDisable}"
                         onClick={createCavaleiro} >
                         Enviar

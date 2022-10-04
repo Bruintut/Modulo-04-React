@@ -1,8 +1,9 @@
+import { useState } from "react";
 import "./Home.css";
 import CavaleiroLista from "components/CavaleiroLista/CavaleiroLista";
 import Navbar from "components/Navbar/Navbar";
 import AdicionaCavaleiroModal from "components/AdicionaCavaleiroModal/AdicionaCavaleiroModal";
-import { useState } from "react";
+
 
 function Home() {
 
@@ -29,7 +30,7 @@ function Home() {
             closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
             onCreateCavaleiro={(cavaleiro) => setCavaleiroParaAdicionar(cavaleiro)} />
         }
-        <AdicionaCavaleiroModal/>
+        
       </div>
     </div>
   );
