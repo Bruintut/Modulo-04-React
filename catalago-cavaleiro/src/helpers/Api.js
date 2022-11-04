@@ -8,7 +8,7 @@ const CavaleiroContext = {
 };
 
 export const Api = {
-  baseUrl: "http://localhost:3000/cavaleiros",
+  baseUrl: "https://api-cavaleiros-react.herokuapp.com/",
   ...CavaleiroContext,
 };
 
