@@ -98,8 +98,17 @@
 .Cavaleiro {
   background: none;
   border: none;
+  transform: translateY(-3px);
+  border-radius: 10px;
+  transition: all .5s;
+  padding: 0;
 }
 
 .Cavaleiro__icone {
   cursor: pointer;
+  transform: translateY(3px);
+}
+
+.Cavaleiro--ativa {
+  background: rgba(148, 0, 211);
 }

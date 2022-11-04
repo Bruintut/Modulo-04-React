@@ -1,10 +1,11 @@
 import "./Navbar.css";
+import { ActionMode } from "constants/index";
 import album from "assets/icons/album.svg";
 import logo from "assets/logo.svg";
 import cavaleiro from "assets/icons/plus.svg";
 import edit from "assets/icons/edit.svg";
 
-function Navbar({ createCavaleiro, updateCavaleiro }) {
+function Navbar({ createCavaleiro, updateCavaleiro, mode }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -20,7 +21,9 @@ function Navbar({ createCavaleiro, updateCavaleiro }) {
         <div className="Header__opcoes Opcoes">
           <button
             type="button"
-            className="Opcoes__cavaleiro Cavaleiro"
+            className={`Opcoes__cavaleiro Cavaleiro ${
+              mode === ActionMode.ATUALIZAR && "Cavaleiro--ativa"
+            }`}
             onClick={() => updateCavaleiro()}
           >
             <img
