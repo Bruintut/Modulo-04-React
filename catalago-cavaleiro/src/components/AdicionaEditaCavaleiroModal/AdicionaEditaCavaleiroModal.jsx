@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
-import "./AdicionaCavaleiroModal.css";
+import "./AdicionaEditaCavaleiroModal.css";
 import { CavaleiroService } from "services/CavaleiroService";
 
-function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
+function AdicionaEditaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
   const form = {
     name: "",
     skill: "",
@@ -111,4 +111,4 @@ function AdicionaCavaleiroModal({ closeModal, onCreateCavaleiro }) {
   );
 }
 
-export default AdicionaCavaleiroModal;
+export default AdicionaEditaCavaleiroModal;
