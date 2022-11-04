@@ -2,8 +2,9 @@ import "./Navbar.css";
 import album from "assets/icons/album.svg";
 import logo from "assets/logo.svg";
 import cavaleiro from "assets/icons/plus.svg";
+import edit from "assets/icons/edit.svg";
 
-function Navbar({ createCavaleiro }) {
+function Navbar({ createCavaleiro, updateCavaleiro }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -17,6 +18,18 @@ function Navbar({ createCavaleiro }) {
           <span className="Logo__titulo"> Cavaleiros </span>
         </div>
         <div className="Header__opcoes Opcoes">
+          <button
+            type="button"
+            className="Opcoes__cavaleiro Cavaleiro"
+            onClick={() => updateCavaleiro()}
+          >
+            <img
+              src={edit}
+              width="40px"
+              className="Cavaleiro__icone"
+              alt="Editar cavaleiro"
+            />
+          </button>
           <button
             type="button"
             className="Opcoes__cavaleiro Cavaleiro"
