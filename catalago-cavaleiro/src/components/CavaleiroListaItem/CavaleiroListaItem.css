@@ -7,6 +7,7 @@
   width: 315px;
   display: flex;
   justify-content: space-around;
+  transition: all 0.5s;
 }
 
 @media (max-width: 400px) {
@@ -15,6 +16,40 @@
     height: 180px;
   }
 }
+
+.CavaleiroListaItem--disable {
+  box-shadow: 0px 0px 7px rgba(148, 0, 211);
+}
+
+.CavaleiroListaItem--disable,
+.CavaleiroListaItem--disable .CavaleiroListaItem__preco {
+  color: gray;
+}
+
+.CavaleiroListaItem--disable .CavaleiroListaItem__badge {
+  display: none;
+}
+
+.CavaleiroListaItem--disable img {
+  filter: grayscale(100%);
+}
+
+.CavaleiroListaItem--disable button:disabled {
+  background-color: gray;
+}
+
+.CavaleiroListaItem__tag {
+  background-color: darkviolet !important;
+  color: white !important;
+  position: absolute;
+  font-size: 0.6em;
+  border-radius: 5px;
+  padding: 5px;
+  top: -15px;
+  left: -10px;
+  letter-spacing: 1px;
+}
+
 
 .CavaleiroListaItem__badge {
   background-color: greenyellow;
@@ -37,6 +72,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  width: 100%;
 }
 
 .CavaleiroListaItem__titulo {
@@ -47,6 +83,7 @@
 
 .CavaleiroListaItem__descricao {
   font-size: 0.85em;
+  width: 100%;
 }
 
 .Acoes {

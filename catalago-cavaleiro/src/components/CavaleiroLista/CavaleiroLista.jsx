@@ -50,6 +50,7 @@ function CavaleiroLista({ cavaleiroCriado, mode }) {
     <div className="CavaleiroLista">
       {cavaleiros.map((cavaleiro, index) => (
         <CavaleiroListaItem
+          mode={mode}
           key={`CavaleiroListaItem-${index}`}
           cavaleiro={cavaleiro}
           quantidadeSelecionada={cavaleiroSelecionado[index]}

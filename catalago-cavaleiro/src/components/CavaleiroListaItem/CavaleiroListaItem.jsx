@@ -1,3 +1,4 @@
+import { ActionMode } from "constants/index";
 import "./CavaleiroListaItem.css";
 
 function CavaleiroListaItem({
@@ -7,10 +8,12 @@ function CavaleiroListaItem({
   onRemove,
   onAdd,
   clickItem,
+  mode,
 }) {
   const removeButton = (canRender, index) =>
     Boolean(canRender) && (
       <button
+        disabled={mode !== ActionMode.NORMAL}
         className="Acoes__remover"
         onClick={(e) => {
           e.stopPropagation();
@@ -29,15 +32,22 @@ function CavaleiroListaItem({
       </span>
     );
 
+  const badgeAction = (canRender) => {
+    if (canRender)
+      return <span className="CavaleiroListaItem__tag"> {mode} </span>;
+  };
+
   return (
     <div className="CavaleiroListaItem" onClick={() => clickItem(cavaleiro.id)}>
       {badgeCounter(quantidadeSelecionada, index)}
+      {badgeAction(mode !== ActionMode.NORMAL)}
       <div>
         <div className="CavaleiroListaItem__name"> {cavaleiro.name} </div>
 
         <div className="CavaleiroListaItem__skill"> {cavaleiro.skill} </div>
         <div className="CavaleiroListaItem__acoes Acoes">
           <button
+            disabled={mode !== ActionMode.NORMAL}
             className={`Acoes__adicionar ${
               !quantidadeSelecionada && "Acoes__adicionar--preencher"
             }`}
