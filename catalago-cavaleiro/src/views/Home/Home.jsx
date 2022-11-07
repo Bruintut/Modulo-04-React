@@ -7,6 +7,7 @@ import AdicionaEditaCavaleiroModal from "components/AdicionaEditaCavaleiroModal/
 import Modal from "components/Modal/Modal";
 
 function Home() {
+  const [cavaleiroEditada, setCavaleiroEditada] = useState();
   const [canShowAdicionaCavaleiroModal, setCanShowAdicionaCavaleiroModal] =
     useState(false);
   const [cavaleiroParaAdicionar, setCavaleiroParaAdicionar] = useState();
@@ -32,6 +33,7 @@ function Home() {
     setCavaleiroParaAdicionar();
     setCavaleiroParaDeletar();
     setCavaleiroParaEditar();
+    setModoAtual(ActionMode.NORMAL);
   };
 
   return (
@@ -44,24 +46,16 @@ function Home() {
         <CavaleiroLista
           mode={modoAtual}
           cavaleiroCriado={cavaleiroParaAdicionar}
+          cavaleiroEditada={cavaleiroEditada}
           deleteCavaleiro={handleDeleteCavaleiro}
           updateCavaleiro={handleUpdateCavaleiro}
         />
         {canShowAdicionaCavaleiroModal && (
-          <AdicionaCavaleiroModal
-            closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
-            onCreateCavaleiro={(cavaleiro) =>
-              setCavaleiroParaAdicionar(cavaleiro)
-            }
-          />
-        )}
-
-        <CavaleiroLista />
-        {canShowAdicionaCavaleiroModal && (
           <AdicionaEditaCavaleiroModal
-            mode= {modoAtual}
+            mode={modoAtual}
             cavaleiroToUpdate={cavaleiroParaEditar}
-            closeModal={handleCloseModal}
+            onUpdateCavaleiro={(cavaleiro) => setCavaleiroEditada(cavaleiro)}
+            closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
             onCreateCavaleiro={(cavaleiro) =>
               setCavaleiroParaAdicionar(cavaleiro)
             }

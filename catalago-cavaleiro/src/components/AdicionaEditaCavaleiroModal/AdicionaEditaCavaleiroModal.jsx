@@ -37,7 +37,7 @@ function AdicionaEditaCavaleiroModal({
   });
 
   const handleSend = async () => {
-    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split("/\\|//").pop();
+    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split(/\\|\//).pop();
 
     const { name, skill, picture } = state;
 

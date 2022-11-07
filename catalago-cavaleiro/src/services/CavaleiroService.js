@@ -35,8 +35,15 @@ export const CavaleiroService = {
         "Content-Type": "application/json",
       },
     }).then(parseTransformItem),
-  updateById: (id) =>
-    fetch(Api.updateCavaleiroById(id), { method: "PUT" }).then(parseResponse),
+  updtateById: (id, cavaleiro) =>
+    fetch(Api.updateCavaleiroById(id), {
+      method: "PUT",
+      body: JSON.stringify(cavaleiro),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(parseResponse),
   deleteById: (id) =>
     fetch(Api.deleteCavaleiroById(id), { method: "DELETE" }).then(
       parseResponse
