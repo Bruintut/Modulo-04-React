@@ -4,6 +4,7 @@ import "./Home.css";
 import CavaleiroLista from "components/CavaleiroLista/CavaleiroLista";
 import Navbar from "components/Navbar/Navbar";
 import AdicionaEditaCavaleiroModal from "components/AdicionaEditaCavaleiroModal/AdicionaEditaCavaleiroModal";
+import Modal from "components/Modal/Modal";
 
 function Home() {
   const [canShowAdicionaCavaleiroModal, setCanShowAdicionaCavaleiroModal] =
@@ -15,6 +16,23 @@ function Home() {
     const novaAcao = modoAtual === action ? ActionMode.NORMAL : action;
     setModoAtual(novaAcao);
   };
+  const [cavaleiroParaEditar, setCavleiroParaEditar] = useState();
+  const [cavaleiroParaDeletar, setCavleiroParaDeletar] = useState();
+  const handleDeleteCavaleiro = (cavaleiroToDelete) => {
+    setCavaleiroParaDeletar(cavaleiroToDelete);
+  };
+
+  const handleUpdateCavaleiro = (cavaleiroToUpdate) => {
+    setCavaleiroParaEditar(cavaleiroToUpdate);
+    setCanShowAdicionaCavaleiroModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setCanShowAdicionaCavaleiroModal(false);
+    setCavaleiroParaAdicionar();
+    setCavaleiroParaDeletar();
+    setCavaleiroParaEditar();
+  };
 
   return (
     <div className="Home">
@@ -23,7 +41,12 @@ function Home() {
         createCavaleiro={() => setCanShowAdicionaCavaleiroModal(true)}
       />
       <div className="Home__container">
-        <CavaleiroLista mode={modoAtual} cavaleiroCriado={cavaleiroParaAdicionar} />
+        <CavaleiroLista
+          mode={modoAtual}
+          cavaleiroCriado={cavaleiroParaAdicionar}
+          deleteCavaleiro={handleDeleteCavaleiro}
+          updateCavaleiro={handleUpdateCavaleiro}
+        />
         {canShowAdicionaCavaleiroModal && (
           <AdicionaCavaleiroModal
             closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
@@ -36,7 +59,9 @@ function Home() {
         <CavaleiroLista />
         {canShowAdicionaCavaleiroModal && (
           <AdicionaEditaCavaleiroModal
-            closeModal={() => setCanShowAdicionaCavaleiroModal(false)}
+            mode= {modoAtual}
+            cavaleiroToUpdate={cavaleiroParaEditar}
+            closeModal={handleCloseModal}
             onCreateCavaleiro={(cavaleiro) =>
               setCavaleiroParaAdicionar(cavaleiro)
             }

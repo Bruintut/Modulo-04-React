@@ -1,10 +1,16 @@
 import "./CavaleiroLista.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import CavaleiroListaItem from "components/CavaleiroListaItem/CavaleiroListaItem";
 import { CavaleiroService } from "services/CavaleiroService";
 import CavaleiroDetalhesModal from "components/CavaleiroDetalhesModal/CavaleiroDetalhesModal";
+import { ActionMode } from "constants/index";
 
-function CavaleiroLista({ cavaleiroCriado, mode }) {
+function CavaleiroLista({
+  cavaleiroCriado,
+  mode,
+  updateCavaleiro,
+  deleteCavaleiro,
+}) {
   const [cavaleiros, setCavaleiros] = useState([]);
 
   const [cavaleiroSelecionado, setCavaleiroSelecionado] = useState({});
@@ -27,17 +33,30 @@ function CavaleiroLista({ cavaleiroCriado, mode }) {
 
   const getCavaleiroById = async (cavaleiroId) => {
     const response = await CavaleiroService.getById(cavaleiroId);
-    setCavaleiroModal(response);
+    const mapper = {
+      [ActionMode.NORMAL]: () => setCavaleiroModal(response),
+      [ActionMode.ATUALIZAR]: () => updateCavaleiro(response),
+      [ActionMode.DELETAR]: () => deleteCavaleiro(response),
+    };
+
+    mapper[mode]();
   };
 
-  const adicionaCavaleiroNaLista = (cavaleiro) => {
-    const lista = [...cavaleiros, cavaleiro];
-    setCavaleiros(lista);
-  };
+  const adicionaCavaleiroNaLista = useCallback(
+    (cavaleiro) => {
+      const lista = [...cavaleiro, cavaleiro];
+      setCavaleiros(lista);
+    },
+    [cavaleiros]
+  );
   useEffect(() => {
-    if (cavaleiroCriado) adicionaCavaleiroNaLista(cavaleiroCriado);
-  }, [cavaleiroCriado]);
-
+    if (
+      cavaleiroCriado &&
+      !cavaleiros.map(({ id }) => id).includes(cavaleiroCriado.id)
+    ) {
+      adicionaCavaleiroNaLista(cavaleiroCriado);
+    }
+  }, [adicionaCavaleiroNaLista, cavaleiroCriado, cavaleiros]);
   const getLista = async () => {
     const response = await CavaleiroService.getLista();
     setCavaleiros(response);
