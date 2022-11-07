@@ -5,6 +5,7 @@ import CavaleiroLista from "components/CavaleiroLista/CavaleiroLista";
 import Navbar from "components/Navbar/Navbar";
 import AdicionaEditaCavaleiroModal from "components/AdicionaEditaCavaleiroModal/AdicionaEditaCavaleiroModal";
 import Modal from "components/Modal/Modal";
+import DeletaCavaleiroModal from "components/DeletaCavaleiroModal/DeletaCavaleiroModal";
 
 function Home() {
   const [cavaleiroEditada, setCavaleiroEditada] = useState();
@@ -12,6 +13,7 @@ function Home() {
     useState(false);
   const [cavaleiroParaAdicionar, setCavaleiroParaAdicionar] = useState();
   const [modoAtual, setModoAtual] = useState(ActionMode.NORMAL);
+  const [cavaleiroRemovido, setCavaleiroRemovido] = useState();
 
   const handleActions = (action) => {
     const novaAcao = modoAtual === action ? ActionMode.NORMAL : action;
@@ -41,12 +43,15 @@ function Home() {
       <Navbar
         mode={modoAtual}
         createCavaleiro={() => setCanShowAdicionaCavaleiroModal(true)}
+        deleteCavaleiro={() => handleActions(ActionMode.DELETAR)}
+        updateCavaleiro={() => handleActions(ActionMode.ATUALIZAR)}
       />
       <div className="Home__container">
         <CavaleiroLista
           mode={modoAtual}
           cavaleiroCriado={cavaleiroParaAdicionar}
           cavaleiroEditada={cavaleiroEditada}
+          cavaleiroRemovido={cavaleiroRemovido}
           deleteCavaleiro={handleDeleteCavaleiro}
           updateCavaleiro={handleUpdateCavaleiro}
         />
@@ -59,6 +64,14 @@ function Home() {
             onCreateCavaleiro={(cavaleiro) =>
               setCavaleiroParaAdicionar(cavaleiro)
             }
+          />
+        )}
+
+        {cavaleiroParaDeletar && (
+          <DeletaCavaleiroModal
+            cavaleiroParaDeletar={cavaleiroParaDeletar}
+            closeModal={handleCloseModal}
+            onDeleteCavaleiro={(cavaleiro) => setCavaleiroRemovido(cavaleiro)}
           />
         )}
       </div>

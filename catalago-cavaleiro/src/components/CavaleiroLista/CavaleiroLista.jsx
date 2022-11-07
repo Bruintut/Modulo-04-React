@@ -10,7 +10,8 @@ function CavaleiroLista({
   mode,
   updateCavaleiro,
   deleteCavaleiro,
-  cavaleiroEditada
+  cavaleiroEditada,
+  cavaleiroRemovido
 }) {
   const [cavaleiros, setCavaleiros] = useState([]);
 
@@ -64,7 +65,7 @@ function CavaleiroLista({
   };
   useEffect(() => {
     getLista();
-  }, [cavaleiroEditada]);
+  }, [cavaleiroEditad, cavaleiroRemovido]);
 
   return (
     <div className="CavaleiroLista">

@@ -34,11 +34,27 @@ function CavaleiroListaItem({
 
   const badgeAction = (canRender) => {
     if (canRender)
-      return <span className="CavaleiroListaItem__tag"> {mode} </span>;
+      return (
+        <span
+          className={`CavaleiroListaItem__tag ${
+            mode === ActionMode.DELETAR && "CavaleiroListaItem__tag--deletar"
+          }`}
+        >
+          {" "}
+          {mode}{" "}
+        </span>
+      );
   };
 
   return (
-    <div className="CavaleiroListaItem" onClick={() => clickItem(cavaleiro.id)}>
+    <div
+      className={`
+    CavaleiroListaItem
+    ${mode !== ActionMode.NORMAL && "CavaleiroListaItem--disable"}
+    ${mode === ActionMode.DELETAR && "CavaleiroListaItem--deletar"}
+  `}
+      onClick={() => clickItem(cavaleiro.id)}
+    >
       {badgeCounter(quantidadeSelecionada, index)}
       {badgeAction(mode !== ActionMode.NORMAL)}
       <div>

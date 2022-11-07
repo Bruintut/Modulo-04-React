@@ -4,8 +4,9 @@ import album from "assets/icons/album.svg";
 import logo from "assets/logo.svg";
 import cavaleiro from "assets/icons/plus.svg";
 import edit from "assets/icons/edit.svg";
+import deletar from "assets/icons/deletar.svg";
 
-function Navbar({ createCavaleiro, updateCavaleiro, mode }) {
+function Navbar({ createCavaleiro, updateCavaleiro, mode, deleteCavaleiro }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -31,6 +32,20 @@ function Navbar({ createCavaleiro, updateCavaleiro, mode }) {
               width="40px"
               className="Cavaleiro__icone"
               alt="Editar cavaleiro"
+            />
+          </button>
+          <button
+            type="button"
+            className={`Opcoes__cavaleiro Cavaleiro ${
+              mode === ActionMode.DELETAR && "Cavaleiro--deletar"
+            }`}
+            onClick={() => deleteCavaleiro()}
+          >
+            <img
+              src={deletar}
+              width="40px"
+              className="Cavaleiro__icone"
+              alt="Deletar cavaleiro"
             />
           </button>
           <button

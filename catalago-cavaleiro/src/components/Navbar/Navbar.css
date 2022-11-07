@@ -112,3 +112,7 @@
 .Cavaleiro--ativa {
   background: rgba(148, 0, 211);
 }
+
+.Cavaleiro--deletar {
+  background: rgba(211, 0, 0);
+}
