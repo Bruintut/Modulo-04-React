@@ -11,11 +11,14 @@ function CavaleiroLista({
   updateCavaleiro,
   deleteCavaleiro,
   cavaleiroEditada,
-  cavaleiroRemovido
+  cavaleiroRemovido,
 }) {
+  const selecionados = JSON.parse(localStorage.getItem("selecionados")) ?? {};
   const [cavaleiros, setCavaleiros] = useState([]);
 
-  const [cavaleiroSelecionado, setCavaleiroSelecionado] = useState({});
+  const [cavaleiroSelecionado, setCavaleiroSelecionado] = useState({
+    selecionados,
+  });
 
   const [cavaleiroModal, setCavaleiroModal] = useState(false);
 
@@ -25,6 +28,19 @@ function CavaleiroLista({
     };
     setCavaleiroSelecionado({ ...cavaleiroSelecionado, ...cavaleiro });
   };
+
+  const setSelecionados = useCallback(() => {
+    if (!cavaleiros.length) return;
+
+    const entries = Object.entries(cavaleiroSelecionado);
+    const sacola = entries.map((arr) => ({
+      cavaleiroId: cavaleiros[arr[0]].id,
+      quantidade: arr[1],
+    }));
+
+    localStorage.setItem("album", JSON.stringify(sacola));
+    localStorage.setItem("selecionados", JSON.stringify(cavaleiroSelecionado));
+  }, [cavaleiroSelecionado, cavaleiros]);
 
   const removerItem = (cavaleiroIndex) => {
     const cavaleiro = {
@@ -51,6 +67,12 @@ function CavaleiroLista({
     },
     [cavaleiros]
   );
+
+  useEffect(() => {
+    setSelecionados();
+  }, [ setSelecionados, cavaleiroSelecionado ]);
+
+
   useEffect(() => {
     if (
       cavaleiroCriado &&
