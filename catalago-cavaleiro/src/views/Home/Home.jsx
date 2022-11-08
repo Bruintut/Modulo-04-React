@@ -19,8 +19,8 @@ function Home() {
     const novaAcao = modoAtual === action ? ActionMode.NORMAL : action;
     setModoAtual(novaAcao);
   };
-  const [cavaleiroParaEditar, setCavleiroParaEditar] = useState();
-  const [cavaleiroParaDeletar, setCavleiroParaDeletar] = useState();
+  const [cavaleiroParaEditar, setCavaleiroParaEditar] = useState();
+  const [cavaleiroParaDeletar, setCavaleiroParaDeletar] = useState();
   const handleDeleteCavaleiro = (cavaleiroToDelete) => {
     setCavaleiroParaDeletar(cavaleiroToDelete);
   };

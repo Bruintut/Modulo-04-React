@@ -87,7 +87,7 @@ function CavaleiroLista({
   };
   useEffect(() => {
     getLista();
-  }, [cavaleiroEditad, cavaleiroRemovido]);
+  }, [cavaleiroEditada, cavaleiroRemovido]);
 
   return (
     <div className="CavaleiroLista">
